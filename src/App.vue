@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <gallery :photos="photos"> </gallery>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import dataService from "@/api/dataService";
+import Gallery from "@/components/Gallery";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    Gallery
+  },
+  mounted() {
+    this.loadPhotos();
+  },
+  methods: {
+    async loadPhotos() {
+      this.photos = await dataService.getPhotos(
+        "query=paris&orientation=landscape"
+      );
+    }
+  },
+  data() {
+    return {
+      photos: {}
+    };
   }
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 </style>
