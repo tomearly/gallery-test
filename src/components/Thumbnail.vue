@@ -1,8 +1,7 @@
 <template>
   <div class="thumbnail">
     <a :href="thumbLinkUrl">
-      <div class="thumbnail-image" :style="style">
-        <img :alt="altDescription" :src="thumbUrl" />
+      <div class="thumbnail-image" :style="styles">
       </div>
     </a>
     <ThumbnailOverlay
@@ -42,8 +41,11 @@ export default {
     }
   },
   computed: {
-    style () {
-      return 'border: 2px solid ' + this.colour;
+    styles() {
+      return {
+        'border': `2px solid ${this.colour}`,
+        'background-image': `url(${this.thumbUrl})`,
+      }
     }
   },
 };
@@ -58,6 +60,8 @@ export default {
   overflow: hidden;
   height: 133px;
   width: 200px;
+  background-repeat: 'no-repeat';
+  background-size: 'cover';
 }
 
 .thumbnail-image img {
