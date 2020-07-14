@@ -1,7 +1,9 @@
 <template>
   <div class="thumbnail">
     <a :href="thumbLinkUrl">
-      <div class="thumbnail-image" :style="styles">
+      <div class="wrapper">
+        <div class="thumbnail-image" :style="styles">
+        </div>
       </div>
     </a>
     <ThumbnailOverlay
@@ -56,21 +58,25 @@ export default {
   position: relative;
 }
 
+.wrapper {
+  overflow: hidden; 
+  height: 133px;
+}
+
 .thumbnail-image {
-  overflow: hidden;
+  transition: all 0.7s ease-in-out;
   height: 133px;
   width: 200px;
-  background-repeat: 'no-repeat';
-  background-size: 'cover';
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-.thumbnail-image img {
-  transition: transform 0.5s ease; /* Animation */
-}
-
-.thumbnail-image:hover img {
-  transform: scale(1.05);
-  position: relative;
+.thumbnail-image:hover {
+  transform: scale(1.15, 1.15);
+  transition: all 0.7s ease-in-out;
+  -webkit-transform: scale(1.15, 1.15);
+  -webkit-transition: all 0.3s ease-in-out;
 }
 
 .thumbnail-overlay {
