@@ -60,7 +60,8 @@ export default {
 
 .wrapper {
   overflow: hidden; 
-  height: 133px;
+  height: 137px;
+  width: 204px;
 }
 
 .thumbnail-image {
