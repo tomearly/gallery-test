@@ -1,5 +1,5 @@
 <template>
-  <gallery :photos="photos"> </gallery>
+  <gallery :photos="photos"></gallery>
 </template>
 
 <script>
