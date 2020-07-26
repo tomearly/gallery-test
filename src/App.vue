@@ -1,5 +1,10 @@
 <template>
-  <gallery :photos="photos"></gallery>
+  <main>
+  <h1>Paris</h1>
+  <section>
+  <gallery :photos="photos"> </gallery>
+  </section>
+  </main>
 </template>
 
 <script>
@@ -31,10 +36,17 @@ export default {
 
 <style lang="scss">
 .gallery {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: "Josefin Sans", sans-serif;
 }
 </style>
